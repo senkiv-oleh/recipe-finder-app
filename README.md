@@ -1,67 +1,88 @@
+
 # Recipe Finder App
 
-Recipe Finder App is a web application that helps users discover and organize recipes based on their preferences and available ingredients.
+Welcome to the **Recipe Finder App**! This web application allows users to search for recipes based on various filters such as cuisine, ingredients, and preparation time. It fetches recipe data using the Spoonacular API and displays the results in an easy-to-navigate interface.
 
 ## Features
 
-- Search for recipes by ingredients or keywords.
-- Save favorite recipes to a personal collection.
-- Filter recipes by dietary preferences (e.g., vegetarian, gluten-free).
-- Step-by-step cooking instructions.
-- Responsive design for mobile and desktop.
-
-## Installation
-
-1. Clone the repository:
-  ```bash
-  git clone https://github.com/your-username/recipe-finder-app.git
-  ```
-2. Navigate to the project directory:
-  ```bash
-  cd recipe-finder-app
-  ```
-3. Install dependencies:
-  ```bash
-  npm install
-  ```
-
-## Usage
-
-1. Start the development server:
-  ```bash
-  npm start
-  ```
-2. Open your browser and navigate to `http://localhost:3000`.
+- **Search Recipes**: Users can search for recipes by query, cuisine type, and maximum preparation time.
+- **Recipe Details**: Users can view detailed information about a recipe, including ingredients, preparation time, servings, and more.
+- **Responsive Design**: The app is fully responsive and works well on both desktop and mobile devices.
+- **Filter Options**: Users can filter the search results based on criteria like cuisine and preparation time.
 
 ## Technologies Used
 
-- **Frontend**: React, CSS
-- **Backend**: Node.js, Express
-- **Database**: MongoDB
-- **API**: Spoonacular API (or any recipe API)
+- **Frontend**: 
+  - Next.js 13 (App Router)
+  - React
+  - Tailwind CSS
+- **API**: Spoonacular API for fetching recipe data
+- **State Management**: React's `useState` and `useEffect`
+- **Routing**: Next.js Dynamic Routes
+
+## Installation
+
+### 1. Clone the repository:
+
+```bash
+git clone git@github.com:senkiv-oleh/recipe-finder-app.git
+```
+
+### 2. Install dependencies:
+
+Navigate to the project folder and install the required dependencies.
+
+```bash
+cd recipe-finder-app
+npm install
+```
+
+### 3. Add environment variables:
+
+You will need to add your Spoonacular API key to the `.env.local` file in the root of your project.
+
+```bash
+NEXT_PUBLIC_SPOONACULAR_API_KEY=your-api-key-here
+```
+
+### 4. Run the development server:
+
+Start the development server using the following command:
+
+```bash
+npm run dev
+```
+
+Your app should now be running on [http://localhost:3000](http://localhost:3000).
+
+## Usage
+
+1. Open the app in your browser.
+2. Use the search bar to search for recipes by query, cuisine, or preparation time.
+3. Click on a recipe to view its detailed information, including ingredients and instructions.
+
+## Folder Structure
+
+- `src/app/recipes/[id]/page.tsx`: Dynamic page to display recipe details.
+- `src/app/recipes/page.tsx`: The page to display a list of recipes.
+- `src/app/page.tsx`: The main page to search.
+- `src/services`: Contains functions for fetching recipe data from the Spoonacular API.
+- `src/components`: Contains functions for components.
+- `src/hooks`: Custom hook for fetching recipes based on search parameters.
+- `src/types`: Type definitions for recipe details.
 
 ## Contributing
 
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository.
-2. Create a new branch:
-  ```bash
-  git checkout -b feature-name
-  ```
-3. Commit your changes:
-  ```bash
-  git commit -m "Add feature-name"
-  ```
-4. Push to the branch:
-  ```bash
-  git push origin feature-name
-  ```
-5. Open a pull request.
+If you'd like to contribute to this project, feel free to fork the repository, create a branch, and submit a pull request. Any improvements or bug fixes are welcome!
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is open-source and available under the [MIT License](LICENSE).
+```
 
+### Instructions:
 
-
+- **Installation**: The README explains how to install and run the app locally, including setting up the environment variables.
+- **Features**: Lists the key features of your Recipe Finder App.
+- **Technologies Used**: Highlights the major technologies used in the project (Next.js, React, Tailwind CSS, Spoonacular API).
+- **Folder Structure**: Provides an overview of how the app is structured and where key files are located.
