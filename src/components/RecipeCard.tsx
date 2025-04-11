@@ -1,9 +1,11 @@
 import Link from 'next/link';
+import { RECIPES_ROUTE } from '@/constants/routs';
+import { Recipe } from '@/types/Recipe';
 
-export default function RecipeCard({ recipe }: { recipe: any }) {
+export default function RecipeCard({ recipe }: { recipe: Recipe }) {
     return (
         <Link
-            href={`/recipes/${recipe.id}`}
+            href={`${RECIPES_ROUTE}/${recipe.id}`}
             className="border p-4 rounded hover:shadow"
         >
             <img

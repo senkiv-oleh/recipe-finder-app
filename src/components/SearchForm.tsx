@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { cuisines } from "@/constants/cuisines";
+import { RECIPES_ROUTE } from "@/constants/routs";
 
 export default function SearchForm() {
   const router = useRouter();
@@ -18,8 +19,7 @@ export default function SearchForm() {
     if (cuisine) params.append("cuisine", cuisine);
     if (maxReadyTime) params.append("maxReadyTime", maxReadyTime);
 
-    console.log("params =", params.toString());
-    router.push(`/recipes?${params.toString()}`);
+    router.push(`${RECIPES_ROUTE}?${params.toString()}`);
   };
 
   return (

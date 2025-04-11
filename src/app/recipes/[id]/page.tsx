@@ -1,20 +1,23 @@
-async function getRecipe(id: string) {
-  const res = await fetch(
-    `https://api.spoonacular.com/recipes/${id}/information?apiKey=${process.env.SPOONACULAR_API_KEY}`,
-    {
-      next: { revalidate: 60 },
-    },
-  );
-  if (!res.ok) throw new Error("Failed to fetch recipe");
-  return res.json();
-}
+import { getRecipe } from '@/services/getRecipe';
+import { RecipeDetails } from '@/types/RecipeDetails';
 
 export default async function RecipeDetailsPage({
   params,
 }: {
   params: { id: string };
 }) {
-  const recipe = await getRecipe(params.id);
+  const { id } = await params;
+  let recipe: RecipeDetails | null = null;
+
+  try {
+    recipe = await getRecipe(id);
+  } catch (error) {
+    console.error("Failed to fetch recipe:", error);
+  }
+
+  if (!recipe) {
+    return <p>Recipe not found or failed to load</p>;
+  }
 
   return (
     <div className="space-y-2">
@@ -27,8 +30,8 @@ export default async function RecipeDetailsPage({
       </p>
       <h3 className="text-lg font-semibold mt-4">Ingredients:</h3>
       <ul className="list-disc list-inside">
-        {recipe.extendedIngredients.map((ing: any) => (
-          <li key={ing.id}>{ing.original}</li>
+        {recipe.extendedIngredients.map((ingredient) => (
+          <li key={ingredient.id}>{ingredient.original}</li>
         ))}
       </ul>
     </div>
