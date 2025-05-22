@@ -1,10 +1,34 @@
-import RecipeList from "@/components/RecipeList";
+import { getRecipes } from '@/services/getRecipes';
+import { Recipe } from '@/types/Recipe';
+import RecipeCard from '@/components/RecipeCard';  
+import  { FetchedRecipe } from '@/types/FetchedRecipe';
 
-export default function RecipesPage() {
+export default async function RecipesPage({
+  searchParams,
+}: {
+  searchParams: FetchedRecipe;
+}) {
+  let recipes = [];
+
+  try {
+    recipes = await getRecipes({
+      query: searchParams.query || '',
+      cuisine: searchParams.cuisine || '',
+      maxReadyTime: searchParams.maxReadyTime || '',
+    });
+  } catch (error) {
+    console.error('Failed to fetch recipes:', error);
+  }
+
+  if (!recipes || recipes.length === 0) {
+    return <p>No recipes found.</p>;
+  }
+
   return (
-    <main className="p-4">
-      <h2 className="text-2xl font-bold mb-4">Recipes</h2>
-      <RecipeList />
-    </main>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {recipes.map((recipe: Recipe) => (
+        <RecipeCard recipe={recipe} key={recipe.id} />
+      ))}
+    </div>
   );
 }

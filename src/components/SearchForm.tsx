@@ -1,24 +1,21 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { cuisines } from "@/constants/cuisines";
-import { RECIPES_ROUTE } from "@/constants/routs";
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { cuisines } from '@/constants/cuisines';
+import { RECIPES_ROUTE } from '@/constants/routs';
+import { buildSearchParams } from '@/utils/buildSearchParams';
 
 export default function SearchForm() {
   const router = useRouter();
-  const [query, setQuery] = useState("");
-  const [cuisine, setCuisine] = useState("");
-  const [maxReadyTime, setMaxReadyTime] = useState("");
+  const [query, setQuery] = useState<string>('');
+  const [cuisine, setCuisine] = useState<string>('');
+  const [maxReadyTime, setMaxReadyTime] = useState<string>('');
 
   const isValid = query || cuisine || maxReadyTime;
 
   const handleSearch = () => {
-    const params = new URLSearchParams();
-    if (query) params.append("query", query);
-    if (cuisine) params.append("cuisine", cuisine);
-    if (maxReadyTime) params.append("maxReadyTime", maxReadyTime);
-
+    const params = buildSearchParams({ query, cuisine, maxReadyTime });
     router.push(`${RECIPES_ROUTE}?${params.toString()}`);
   };
 

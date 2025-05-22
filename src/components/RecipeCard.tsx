@@ -1,19 +1,25 @@
 import Link from 'next/link';
-import { RECIPES_ROUTE } from '@/constants/routs';
+import Image from 'next/image';
 import { Recipe } from '@/types/Recipe';
 
-export default function RecipeCard({ recipe }: { recipe: Recipe }) {
-    return (
-        <Link
-            href={`${RECIPES_ROUTE}/${recipe.id}`}
-            className="border p-4 rounded hover:shadow"
+export default function RecipeCard({ recipe }: { recipe: Recipe;}) {
+  return (
+
+      <Link
+          href={`/recipes/${recipe.id}`}
+          className="bg-white p-4 rounded shadow hover:shadow-md"
         >
-            <img
-                src={recipe.image}
-                alt={recipe.title}
-                className="w-full h-40 object-cover rounded"
-            />
-            <h3 className="text-lg font-medium mt-2">{recipe.title}</h3>
+          <Image
+            src={recipe.image}
+            alt={recipe.title}
+            width={400}
+            height={192}
+            className="w-full h-48 object-cover rounded"
+            style={{ objectFit: 'cover', borderRadius: '0.5rem' }}
+            priority={false}
+          />
+        
+          <h3 className="mt-2 font-semibold">{recipe.title}</h3>
         </Link>
-    );
+  );
 }

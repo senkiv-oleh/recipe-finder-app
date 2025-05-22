@@ -12,7 +12,7 @@ export default async function RecipeDetailsPage({
   try {
     recipe = await getRecipe(id);
   } catch (error) {
-    console.error("Failed to fetch recipe:", error);
+    console.error('Failed to fetch recipe:', error);
   }
 
   if (!recipe) {

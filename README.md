@@ -1,4 +1,3 @@
-
 # Recipe Finder App
 
 Welcome to the **Recipe Finder App**! This web application allows users to search for recipes based on various filters such as cuisine, ingredients, and preparation time. It fetches recipe data using the Spoonacular API and displays the results in an easy-to-navigate interface.
@@ -12,7 +11,7 @@ Welcome to the **Recipe Finder App**! This web application allows users to searc
 
 ## Technologies Used
 
-- **Frontend**: 
+- **Frontend**:
   - Next.js 13 (App Router)
   - React
   - Tailwind CSS
@@ -78,6 +77,7 @@ If you'd like to contribute to this project, feel free to fork the repository, c
 ## License
 
 This project is open-source and available under the [MIT License](LICENSE).
+
 ```
 
 ### Instructions:
@@ -86,3 +86,4 @@ This project is open-source and available under the [MIT License](LICENSE).
 - **Features**: Lists the key features of your Recipe Finder App.
 - **Technologies Used**: Highlights the major technologies used in the project (Next.js, React, Tailwind CSS, Spoonacular API).
 - **Folder Structure**: Provides an overview of how the app is structured and where key files are located.
+```

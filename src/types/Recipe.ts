@@ -1,5 +1,5 @@
 export type Recipe = {
-  id: string; 
+  id: string;
   title: string;
   image: string;
   readyInMinutes?: number;
@@ -8,5 +8,4 @@ export type Recipe = {
     id?: number;
     original?: string;
   };
-
-}
+};
