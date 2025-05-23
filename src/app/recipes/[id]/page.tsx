@@ -1,5 +1,6 @@
 import { getRecipe } from '@/services/getRecipe';
-import { RecipeDetails } from '@/types/RecipeDetails';
+import { RecipeDetailsType } from '@/types/RecipeDetails';
+import RecipeDetails from '@/components/RecipeDetails';
 
 export default async function RecipeDetailsPage({
   params,
@@ -7,7 +8,7 @@ export default async function RecipeDetailsPage({
   params: { id: string };
 }) {
   const { id } = await params;
-  let recipe: RecipeDetails | null = null;
+  let recipe: RecipeDetailsType | null = null;
 
   try {
     recipe = await getRecipe(id);
@@ -21,19 +22,7 @@ export default async function RecipeDetailsPage({
 
   return (
     <div className="space-y-2">
-      <h2 className="text-2xl font-bold">{recipe.title}</h2>
-      <p>
-        <strong>Ready in:</strong> {recipe.readyInMinutes} minutes
-      </p>
-      <p>
-        <strong>Servings:</strong> {recipe.servings}
-      </p>
-      <h3 className="text-lg font-semibold mt-4">Ingredients:</h3>
-      <ul className="list-disc list-inside">
-        {recipe.extendedIngredients.map((ingredient) => (
-          <li key={ingredient.id}>{ingredient.original}</li>
-        ))}
-      </ul>
+      <RecipeDetails recipe={recipe} />
     </div>
   );
 }

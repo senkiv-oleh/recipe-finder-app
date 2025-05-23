@@ -19,4 +19,3 @@ export async function getRecipe(id: string) {
     throw new Error(`Failed to fetch recipe: ${error}`);
   }
 }
-

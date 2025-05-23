@@ -1,6 +1,6 @@
 import { Recipe } from './Recipe';
 
-export type RecipeDetails = Recipe & {
+export type RecipeDetailsType = Recipe & {
   readyInMinutes: number;
   servings: number;
   extendedIngredients: [

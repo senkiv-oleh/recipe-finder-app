@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   env: {
     SPOONACULAR_API_KEY: process.env.SPOONACULAR_API_KEY,
   },
-   images: {
+  images: {
     domains: ['img.spoonacular.com'],
   },
 };

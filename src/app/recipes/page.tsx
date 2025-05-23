@@ -1,7 +1,7 @@
 import { getRecipes } from '@/services/getRecipes';
 import { Recipe } from '@/types/Recipe';
-import RecipeCard from '@/components/RecipeCard';  
-import  { FetchedRecipe } from '@/types/FetchedRecipe';
+import RecipeCard from '@/components/RecipeCard';
+import { FetchedRecipe } from '@/types/FetchedRecipe';
 
 export default async function RecipesPage({
   searchParams,
@@ -12,9 +12,9 @@ export default async function RecipesPage({
 
   try {
     recipes = await getRecipes({
-      query: searchParams.query || '',
-      cuisine: searchParams.cuisine || '',
-      maxReadyTime: searchParams.maxReadyTime || '',
+      query: searchParams?.query || '',
+      cuisine: searchParams?.cuisine || '',
+      maxReadyTime: searchParams?.maxReadyTime || '',
     });
   } catch (error) {
     console.error('Failed to fetch recipes:', error);
