@@ -2,6 +2,8 @@
 
 Welcome to the **Recipe Finder App**! This web application allows users to search for recipes based on various filters such as cuisine, ingredients, and preparation time. It fetches recipe data using the Spoonacular API and displays the results in an easy-to-navigate interface.
 
+[DEMO LINK](https://recipe-finder-app-seven-sooty.vercel.app/) | [Repo](https://github.com/senkiv-oleh/recipe-finder-app)
+
 ## Features
 
 - **Search Recipes**: Users can search for recipes by query, cuisine type, and maximum preparation time.
@@ -65,10 +67,13 @@ Your app should now be running on [http://localhost:3000](http://localhost:3000)
 - `src/app/recipes/[id]/page.tsx`: Dynamic page to display recipe details.
 - `src/app/recipes/page.tsx`: The page to display a list of recipes.
 - `src/app/page.tsx`: The main page to search.
-- `src/services`: Contains functions for fetching recipe data from the Spoonacular API.
 - `src/components`: Contains functions for components.
+- `src/constants`: Static data and constants
 - `src/hooks`: Custom hook for fetching recipes based on search parameters.
+- `src/services`: Contains functions for fetching recipe data from the Spoonacular API.
+- `src/styles`: # CSS styles
 - `src/types`: Type definitions for recipe details.
+- `src/utils`: Helper utilities
 
 ## Contributing
 
@@ -77,13 +82,3 @@ If you'd like to contribute to this project, feel free to fork the repository, c
 ## License
 
 This project is open-source and available under the [MIT License](LICENSE).
-
-```
-
-### Instructions:
-
-- **Installation**: The README explains how to install and run the app locally, including setting up the environment variables.
-- **Features**: Lists the key features of your Recipe Finder App.
-- **Technologies Used**: Highlights the major technologies used in the project (Next.js, React, Tailwind CSS, Spoonacular API).
-- **Folder Structure**: Provides an overview of how the app is structured and where key files are located.
-```
