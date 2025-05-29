@@ -5,7 +5,7 @@ import RecipeDetails from '@/components/RecipeDetails';
 export default async function RecipeDetailsPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
   let recipe: RecipeDetailsType | null = null;

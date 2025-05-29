@@ -6,15 +6,17 @@ import { FetchedRecipe } from '@/types/FetchedRecipe';
 export default async function RecipesPage({
   searchParams,
 }: {
-  searchParams: FetchedRecipe;
+  searchParams: Promise<FetchedRecipe>;
 }) {
   let recipes = [];
+    const resolvedSearchParams = await searchParams;
+
 
   try {
     recipes = await getRecipes({
-      query: searchParams?.query || '',
-      cuisine: searchParams?.cuisine || '',
-      maxReadyTime: searchParams?.maxReadyTime || '',
+      query: resolvedSearchParams?.query || '',
+      cuisine: resolvedSearchParams?.cuisine || '',
+      maxReadyTime: resolvedSearchParams?.maxReadyTime || '',
     });
   } catch (error) {
     console.error('Failed to fetch recipes:', error);
