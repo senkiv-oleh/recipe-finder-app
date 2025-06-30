@@ -17,7 +17,8 @@ export function useRecipes() {
       setError(null);
       try {
         const query = searchParams.get('query') ?? undefined;
-        const cuisine = searchParams.get('cuisine') ?? undefined;
+        const cuisineParam = searchParams.get('cuisine');
+        const cuisine = cuisineParam ? cuisineParam.split(',') : undefined;
         const maxReadyTime = searchParams.get('maxReadyTime') ?? undefined;
 
         const result = await getRecipes({ query, cuisine, maxReadyTime });

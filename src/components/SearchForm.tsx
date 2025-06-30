@@ -12,7 +12,7 @@ type Suggestion = { id: number; title: string; imageType: string };
 export default function SearchForm () {
   const router = useRouter();
   const [query, setQuery] = useState<string>('');
-  const [cuisine, setCuisine] = useState<string>('');
+  const [cuisine, setCuisine] = useState<string[]>([]);
   const [maxReadyTime, setMaxReadyTime] = useState<string>('');
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
   const [showDropdown, setShowDropdown] = useState(false);
@@ -56,7 +56,13 @@ export default function SearchForm () {
   const handleSelect = (title: string) => {
     setQuery(title);
     setShowDropdown(false);
-    setJustClicked(true); 
+    setJustClicked(true);
+  };
+
+  const handleCuisineChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    if (!cuisine.includes(e.target.value) && e.target.value) {
+      setCuisine(prev => [...prev, e.target.value]);
+    }
   };
 
   return (
@@ -67,10 +73,10 @@ export default function SearchForm () {
         placeholder='Search recipes...'
         value={query}
         onChange={e => setQuery(e.target.value)}
-        className='w-full p-2 border rounded'
+        className='w-full p-2 border rounded h-10'
       />
       {showDropdown && suggestions.length > 0 && (
-        <ul className='absolute w-2xl z-10 bg-white border border-gray-200 rounded mt-1 max-h-60 overflow-y-auto shadow-lg'>
+        <ul className='absolute left-0 right-0 z-10 w-full z-10 bg-white border border-gray-200 rounded mt-1 max-h-60 overflow-y-auto shadow-lg'>
           {suggestions.map(item => (
             <li
               key={item.id}
@@ -83,9 +89,9 @@ export default function SearchForm () {
         </ul>
       )}
       <select
-        className='w-full p-2 border rounded'
-        value={cuisine}
-        onChange={e => setCuisine(e.target.value)}
+        className='w-full p-2 border rounded h-10'
+        value={cuisine.length > 0 ? cuisine[cuisine.length - 1] : ''}
+        onChange={handleCuisineChange}
       >
         <option value=''>Select cuisine</option>
         {cuisines.map(c => (
@@ -94,12 +100,47 @@ export default function SearchForm () {
           </option>
         ))}
       </select>
+      <div className='w-full p-2 min-h-[56px] border border-dashed border-gray-300 rounded flex flex-wrap overflow-hidden justify-start items-center'>
+        {cuisine.length === 0 ? (
+          <span className='text-md text-gray-500'>Selected cuisines....</span>
+        ) : (
+          cuisine.map((c, index) => (
+            <button
+              key={index}
+              onClick={() =>
+                setCuisine(prev => prev.filter(item => item !== c))
+              }
+              className='group flex flex-row items-center justify-between gap-2 bg-transparent hover:bg-gray-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded text-lg cursor-pointer mr-2 mb-2'
+            >
+              {c}
+              <svg
+                className='h-5 w-5 text-gray-700 shrink-0 group-hover:text-white'
+                aria-hidden='true'
+                xmlns='http://www.w3.org/2000/svg'
+                width='24'
+                height='24'
+                fill='none'
+                viewBox='0 0 24 24'
+              >
+                <path
+                  stroke='currentColor'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth='3'
+                  d='M6 18 17.94 6M18 18 6.06 6'
+                />
+              </svg>
+            </button>
+          ))
+        )}
+      </div>
+
       <input
         type='number'
         placeholder='Max preparation time (minutes)'
         value={maxReadyTime}
         onChange={e => setMaxReadyTime(e.target.value)}
-        className='w-full p-2 border rounded'
+        className='w-full p-2 border rounded h-10'
       />
       <button
         onClick={handleSearch}

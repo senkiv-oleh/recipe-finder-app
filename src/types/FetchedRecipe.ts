@@ -1,5 +1,5 @@
 export type FetchedRecipe = {
   query?: string;
-  cuisine?: string;
+  cuisine?: string[];
   maxReadyTime?: string;
 };

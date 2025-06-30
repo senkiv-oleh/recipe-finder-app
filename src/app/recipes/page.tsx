@@ -15,7 +15,11 @@ export default async function RecipesPage({
   try {
     recipes = await getRecipes({
       query: resolvedSearchParams?.query || '',
-      cuisine: resolvedSearchParams?.cuisine || '',
+      cuisine: resolvedSearchParams?.cuisine
+        ? Array.isArray(resolvedSearchParams.cuisine)
+          ? resolvedSearchParams.cuisine
+          : [resolvedSearchParams.cuisine]
+        : undefined,
       maxReadyTime: resolvedSearchParams?.maxReadyTime || '',
     });
   } catch (error) {
