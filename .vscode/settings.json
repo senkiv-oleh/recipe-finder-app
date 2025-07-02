@@ -1,0 +1,10 @@
+{
+  "workbench.settings.useSplitJSON": true,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "json.schemas": [
+    
+  ]
+}
