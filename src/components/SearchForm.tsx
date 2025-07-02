@@ -76,7 +76,7 @@ export default function SearchForm () {
         className='w-full p-2 border rounded h-10'
       />
       {showDropdown && suggestions.length > 0 && (
-        <ul className='absolute left-0 right-0 z-10 w-full z-10 bg-white border border-gray-200 rounded mt-1 max-h-60 overflow-y-auto shadow-lg'>
+        <ul className='absolute w-[576px] z-10 bg-white border border-gray-200 rounded mt-1 max-h-60 overflow-y-auto shadow-lg'>
           {suggestions.map(item => (
             <li
               key={item.id}
